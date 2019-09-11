@@ -7,6 +7,8 @@ char a, b, c;
 char min = 0;
 char seg = 0;
 
+char AUX1 = 0;
+
 void interrupt isr(void) {
     if (INTCONbits.TMR0IF) {
         TMR0 = 131;
@@ -94,26 +96,45 @@ void setup(void) {
 
 void loop(void) {
     /*Mostra 1 no display 1*/
-    PORTD = display7s(min/10);
+    PORTD = display7s(min / 10);
     digitalWrite(_RA2, HIGH);
     delay(1);
     digitalWrite(_RA2, LOW);
-    
+
     /*Mostra 2 no display 2*/
-    PORTD = display7s(min%10);
+    PORTD = display7s(min % 10);
     digitalWrite(_RA3, HIGH);
     delay(1);
     digitalWrite(_RA3, LOW);
-    
+
     /*Mostra 2 no display 3*/
-    PORTD = display7s(seg/10);
+    PORTD = display7s(seg / 10);
     digitalWrite(_RA4, HIGH);
     delay(1);
     digitalWrite(_RA4, LOW);
-    
+
     /*Mostra 2 no display 4*/
-    PORTD = display7s(seg%10);
+    PORTD = display7s(seg % 10);
     digitalWrite(_RA5, HIGH);
     delay(1);
     digitalWrite(_RA5, LOW);
+
+
+    //leitura na borda de descida com bloqueio
+    if (!digitalRead(_RB0)) {
+        min = 0;
+        seg = 0;
+    }
+    //leitura na borda de descida sem bloqueio
+    if (!digitalRead(_RB1)) {
+        if (AUX1) {
+            delay(5); //atraso 10 ms
+            if (!digitalRead(_RB1)) {
+                T2CONbits.TMR2ON = !T2CONbits.TMR2ON; //Desliga o TIMER02 parando a contagem
+                AUX1 = 0;
+            }
+        }
+    } else {
+        AUX1 = 1;
+    }
 }
