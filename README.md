@@ -20,7 +20,7 @@ Este repositório contém todos exercícios que eu realizei durante a disciplina
 
 <li>[GIT](https://git-scm.com/downloads)</li>
 <li>[PICSimLab](https://sourceforge.net/projects/picsim/)</li>
-<li>[MPLAB x IDE](MPLAB X IDE | Microchip Technology)</li>
+<li>[MPLAB x IDE](https://www.microchip.com/mplab/mplab-x-ide)</li>
 
 ### Instalando e rodando:
 
