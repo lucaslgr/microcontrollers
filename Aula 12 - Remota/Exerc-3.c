@@ -16,11 +16,11 @@
 #define _AMIN 0x12
 #define _AMAX 0x13
 
-//Saídas Analógicas
+//Saï¿½das Analï¿½gicas
 #define _TMIN 0x20
 #define _TMAX 0x21
 
-//Entradas Analógicas
+//Entradas Analï¿½gicas
 #define _VOLU 0x30
 #define _TEMP 0x31
 
@@ -67,7 +67,7 @@ void loop(void)
         volume();
         Serial_write(_BALT);
     }
-    while (Serial_read(0) == 0); //Quando atingir o nível da boia alta, a leitura reotorna 1 e o loop continua
+    while (Serial_read(0) == 0); //Quando atingir o nï¿½vel da boia alta, a leitura reotorna 1 e o loop continua
     volume();
 
 
@@ -96,6 +96,6 @@ void loop(void)
         volume();
         Serial_write(_BBAI);
     }
-    while (Serial_read(0) == 1); //Quando atingir o nível da boia alta, a leitura reotorna 1 e o loop continua
+    while (Serial_read(0) == 1); //Quando atingir o nï¿½vel da boia alta, a leitura reotorna 1 e o loop continua
     volume();
 }
